@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Batch</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">🧑‍🎓 Engineering Scheduler</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/timetable">Timetable</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" id="searchTxt" placeholder="Search schedules...">
+                <button class="search-btn" id="searchBtn">Search</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="scheduler">
+            <h2>Add Class Schedule</h2>
+            <select id="day" class="input-field">
+                <option value="">Select Day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+            </select>
+            <input type="time" id="startTime" class="input-field" placeholder="Start Time">
+            <input type="time" id="endTime" class="input-field" placeholder="End Time">
+            <input type="text" id="className" class="input-field" placeholder="Class (e.g., CSE-A)">
+            <input type="text" id="subject" class="input-field" placeholder="Subject (e.g., Physics)">
+            <input type="text" id="teacher" class="input-field" placeholder="Teacher (e.g., Prof. Sharma)">
+            <button class="search-btn" id="addScheduleBtn">Add Schedule</button>
+            <div class="controls">
+                <button class="search-btn" id="exportBtn">📤 Export Schedule</button>
+                <input type="file" id="importFile" style="display:none;">
+                <button class="search-btn" id="importBtn">📥 Import Schedule</button>
+            </div>
+        </div>
+
+        <div class="classes">
+            <h2>Scheduled Classes</h2>
+            <div id="notes" class="showNotes"></div>
+        </div>
+    </div>
+
+    <!-- Add external script -->
+    <script src="/script.js"></script>
+</body>
+</html>

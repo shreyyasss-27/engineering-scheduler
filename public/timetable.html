@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full Timetable</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">🧑‍🎓 Engineering Scheduler</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/timetable">Timetable</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>📚 Complete Timetable</h1>
+        <div class="controls">
+            <select id="classFilter" class="input-field">
+                <option value="">All Classes</option>
+            </select>
+            <select id="dayFilter" class="input-field">
+                <option value="">All Days</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+            </select>
+            <button class="search-btn" id="downloadPdfBtn">📄 Download PDF</button>
+        </div>
+        <div id="tableSection"></div>
+        <a href="/" class="back-btn">⬅️ Back to Scheduler</a>
+    </div>
+
+    <!-- Add external script -->
+    <script src="/script.js"></script>
+</body>
+</html>
