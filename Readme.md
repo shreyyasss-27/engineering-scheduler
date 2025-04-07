@@ -1,69 +1,117 @@
-Engineering Scheduler
-A web-based application to manage class schedules for engineering students. Users can add, view, search, export/import, and delete schedules, with a timetable view and PDF download feature. Built with Node.js, Express, MongoDB, and vanilla JavaScript.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Scheduler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Engineering Scheduler</h1>
+    <p>A web-based application to manage class schedules for engineering students. Users can add, view, search, export/import, and delete schedules, with a timetable view and PDF download feature. Built with Node.js, Express, MongoDB, and vanilla JavaScript.</p>
 
-Features
-Add class schedules with day, time, class name, subject, and teacher
-View all schedules in a card layout
-Search schedules by class, subject, or teacher
-Export schedules as JSON and import from JSON files
-View a complete timetable with filtering by class and day
-Download timetable as PDF
-Persistent storage using MongoDB
-Prerequisites
-Before you begin, ensure you have the following installed:
+    <h2>Features</h2>
+    <ul>
+        <li>Add class schedules with day, time, class name, subject, and teacher</li>
+        <li>View all schedules in a card layout</li>
+        <li>Search schedules by class, subject, or teacher</li>
+        <li>Export schedules as JSON and import from JSON files</li>
+        <li>View a complete timetable with filtering by class and day</li>
+        <li>Download timetable as PDF</li>
+        <li>Persistent storage using MongoDB</li>
+    </ul>
 
-Node.js (v14 or higher)
-MongoDB (Community Server)
-A web browser (e.g., Chrome, Firefox)
-Optional: MongoDB Compass for a GUI to view database data
-Installation
-Clone the Repository
-bash
+    <h2>Prerequisites</h2>
+    <p>Before you begin, ensure you have the following installed:</p>
+    <ul>
+        <li><a href="https://nodejs.org/">Node.js</a> (v14 or higher)</li>
+        <li><a href="https://www.mongodb.com/try/download/community">MongoDB</a> (Community Server)</li>
+        <li>A web browser (e.g., Chrome, Firefox)</li>
+        <li>Optional: <a href="https://www.mongodb.com/products/compass">MongoDB Compass</a> for a GUI to view database data</li>
+    </ul>
 
-Collapse
-
-Wrap
-
-Copy
-git clone https://github.com/your-username/engineering-scheduler.git
-cd engineering-scheduler
-Replace your-username with your GitHub username.
-Install Node.js Dependencies
-bash
-
-Collapse
-
-Wrap
-
-Copy
-npm install
-This installs Express, Mongoose, body-parser, and cors.
-Set Up MongoDB
-Windows:
-Download and install MongoDB Community Server from the official site.
-Create a data directory: mkdir C:\data\db.
-macOS/Linux:
-Install via Homebrew (macOS):
-bash
-
-Collapse
-
-Wrap
-
-Copy
-brew tap mongodb/brew
-brew install mongodb-community
-Or follow MongoDB Docs for Linux.
-Create a data directory: mkdir -p /data/db.
-Directory Structure Ensure your project looks like this:
-text
-
-Collapse
-
-Wrap
-
-Copy
-engineering-scheduler/
+    <h2>Installation</h2>
+    <ol>
+        <li>
+            <strong>Clone the Repository</strong>
+            <pre><code>git clone https://github.com/your-username/engineering-scheduler.git
+cd engineering-scheduler</code></pre>
+            Replace <code>your-username</code> with your GitHub username.
+        </li>
+        <li>
+            <strong>Install Node.js Dependencies</strong>
+            <pre><code>npm install</code></pre>
+            This installs Express, Mongoose, body-parser, and cors.
+        </li>
+        <li>
+            <strong>Set Up MongoDB</strong>
+            <ul>
+                <li><strong>Windows</strong>:
+                    <ul>
+                        <li>Download and install MongoDB Community Server from the official site.</li>
+                        <li>Create a data directory: <code>mkdir C:\data\db</code>.</li>
+                    </ul>
+                </li>
+                <li><strong>macOS/Linux</strong>:
+                    <ul>
+                        <li>Install via Homebrew (macOS): 
+                            <pre><code>brew tap mongodb/brew
+brew install mongodb-community</code></pre>
+                        </li>
+                        <li>Or follow <a href="https://docs.mongodb.com/manual/administration/install-on-linux/">MongoDB Docs</a> for Linux.</li>
+                        <li>Create a data directory: <code>mkdir -p /data/db</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Directory Structure</strong>
+            <p>Ensure your project looks like this:</p>
+            <pre><code>engineering-scheduler/
 ├── public/
 │   ├── index.html
 │   ├── timetable.html
@@ -73,129 +121,75 @@ engineering-scheduler/
 │   └── Schedule.js
 ├── server.js
 ├── package.json
-└── README.md
-Running the Project
-Start MongoDB
-Open a terminal and run:
-bash
+└── README.md</code></pre>
+        </li>
+    </ol>
 
-Collapse
+    <h2>Running the Project</h2>
+    <ol>
+        <li>
+            <strong>Start MongoDB</strong>
+            <p>Open a terminal and run:</p>
+            <pre><code>mongod</code></pre>
+            <ul>
+                <li>Windows: If not in PATH, use <code>mongod --dbpath C:\data\db</code>.</li>
+                <li>Keep this terminal open.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Start the Node.js Server</strong>
+            <p>Open a new terminal in the project directory:</p>
+            <pre><code>cd engineering-scheduler
+node server.js</code></pre>
+            <p>You should see:</p>
+            <pre><code>Server running on port 3000
+MongoDB connected</code></pre>
+            <p>Keep this terminal open.</p>
+        </li>
+        <li>
+            <strong>Access the Application</strong>
+            <p>Open a web browser and go to:</p>
+            <ul>
+                <li><a href="http://localhost:3000">http://localhost:3000</a> for the scheduler page</li>
+                <li><a href="http://localhost:3000/timetable">http://localhost:3000/timetable</a> for the timetable view</li>
+            </ul>
+        </li>
+    </ol>
 
-Wrap
+    <h2>Usage</h2>
+    <ul>
+        <li><strong>Add a Schedule</strong>: On the home page (<code>/</code>), fill in the form (day, start/end time, class, subject, teacher) and click "Add Schedule." Schedules appear below in the "Scheduled Classes" section.</li>
+        <li><strong>Search Schedules</strong>: Type in the search bar to filter schedules by class, subject, or teacher.</li>
+        <li><strong>Delete a Schedule</strong>: Click the "🗑️ Delete" button on a schedule card.</li>
+        <li><strong>Export/Import Schedules</strong>: Click "Export Schedule" to download as JSON. Click "Import Schedule," select a JSON file, and upload.</li>
+        <li><strong>View Timetable</strong>: Go to <code>/timetable</code>, filter by class or day, and click "Download PDF" to save as a PDF.</li>
+    </ul>
 
-Copy
-mongod
-Windows: If not in PATH, use mongod --dbpath C:\data\db.
-Keep this terminal open.
-Start the Node.js Server
-Open a new terminal in the project directory:
-bash
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li><strong>MongoDB Not Connecting</strong>: Ensure <code>mongod</code> is running and the connection string in <code>server.js</code> matches your setup (<code>mongodb://localhost:27017/engineering-scheduler</code>).</li>
+        <li><strong>Schedules Not Saving</strong>: Check browser Console (F12 > Console) for errors. Verify MongoDB data: <code>mongo</code>, <code>use engineering-scheduler</code>, <code>db.schedules.find()</code>.</li>
+        <li><strong>Port Conflict</strong>: If port 3000 is in use, edit <code>server.js</code> to change <code>PORT</code> (e.g., <code>const PORT = 3001</code>).</li>
+    </ul>
 
-Collapse
+    <h2>Technologies Used</h2>
+    <ul>
+        <li><strong>Frontend</strong>: HTML, CSS, Vanilla JavaScript, html2pdf.js</li>
+        <li><strong>Backend</strong>: Node.js, Express</li>
+        <li><strong>Database</strong>: MongoDB with Mongoose</li>
+        <li><strong>Styling</strong>: Custom CSS with responsive design</li>
+    </ul>
 
-Wrap
+    <h2>Contributing</h2>
+    <ol>
+        <li>Fork the repository.</li>
+        <li>Create a new branch: <code>git checkout -b feature-name</code>.</li>
+        <li>Make changes and commit: <code>git commit -m "Add feature"</code>.</li>
+        <li>Push to your fork: <code>git push origin feature-name</code>.</li>
+        <li>Create a pull request.</li>
+    </ol>
 
-Copy
-cd engineering-scheduler
-node server.js
-You should see:
-text
-
-Collapse
-
-Wrap
-
-Copy
-Server running on port 3000
-MongoDB connected
-Keep this terminal open.
-Access the Application
-Open a web browser and go to:
-http://localhost:3000 for the scheduler page
-http://localhost:3000/timetable for the timetable view
-Usage
-Add a Schedule:
-On the home page (/), fill in the form (day, start/end time, class, subject, teacher) and click "Add Schedule."
-Schedules appear below in the "Scheduled Classes" section.
-Search Schedules:
-Type in the search bar to filter schedules by class, subject, or teacher.
-Delete a Schedule:
-Click the "🗑️ Delete" button on a schedule card.
-Export/Import Schedules:
-Click "Export Schedule" to download as JSON.
-Click "Import Schedule," select a JSON file, and upload.
-View Timetable:
-Go to /timetable, filter by class or day, and click "Download PDF" to save as a PDF.
-Troubleshooting
-MongoDB Not Connecting:
-Ensure mongod is running and the connection string in server.js matches your setup (mongodb://localhost:27017/engineering-scheduler).
-Schedules Not Saving:
-Check browser Console (F12 > Console) for errors.
-Verify MongoDB data: mongo, use engineering-scheduler, db.schedules.find().
-Port Conflict:
-If port 3000 is in use, edit server.js to change PORT (e.g., const PORT = 3001).
-Technologies Used
-Frontend: HTML, CSS, Vanilla JavaScript, html2pdf.js
-Backend: Node.js, Express
-Database: MongoDB with Mongoose
-Styling: Custom CSS with responsive design
-Contributing
-Fork the repository.
-Create a new branch: git checkout -b feature-name.
-Make changes and commit: git commit -m "Add feature".
-Push to your fork: git push origin feature-name.
-Create a pull request.
-License
-This project is open-source and available under the .
-
-Steps to Add to GitHub
-Create a New File:
-In your engineering-scheduler directory, create a file named README.md.
-Copy and paste the content above into it.
-Initialize Git (if not already done):
-bash
-
-Collapse
-
-Wrap
-
-Copy
-git init
-Add Files to Git:
-bash
-
-Collapse
-
-Wrap
-
-Copy
-git add .
-Commit Changes:
-bash
-
-Collapse
-
-Wrap
-
-Copy
-git commit -m "Initial commit with Engineering Scheduler project"
-Create a GitHub Repository:
-Go to GitHub, log in, and click "New" to create a repository.
-Name it engineering-scheduler (or your preferred name).
-Don’t initialize with a README (since we’re adding our own).
-Link Local Project to GitHub:
-Follow the GitHub instructions after creating the repo, typically:
-bash
-
-Collapse
-
-Wrap
-
-Copy
-git remote add origin https://github.com/your-username/engineering-scheduler.git
-git branch -M main
-git push -u origin main
-Replace your-username with your GitHub username.
-Verify on GitHub:
-Visit your repository URL (e.g., https://github.com/your-username/engineering-scheduler).
-Check that all files, including README.md, are uploaded and the README displays correctly.
+    <h2>License</h2>
+    <p>This project is open-source and available under the <a href="LICENSE">MIT License</a>.</p>
+</body>
+</html>
