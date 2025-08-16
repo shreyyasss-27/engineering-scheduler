@@ -29,10 +29,9 @@ Installation
 
 1.  **Clone the Repository**
     
-        git clone https://github.com/your-username/engineering-scheduler.git
+        git clone https://github.com/shreyyasss-27/engineering-scheduler.git
         cd engineering-scheduler
     
-    Replace `your-username` with your GitHub username.
 2.  **Install Node.js Dependencies**
     
         npm install
@@ -42,14 +41,7 @@ Installation
     *   **Windows**:
         *   Download and install MongoDB Community Server from the official site.
         *   Create a data directory: `mkdir C:\data\db`.
-    *   **macOS/Linux**:
-        *   Install via Homebrew (macOS):
-            
-                brew tap mongodb/brew
-                brew install mongodb-community
-            
-        *   Or follow [MongoDB Docs](https://docs.mongodb.com/manual/administration/install-on-linux/) for Linux.
-        *   Create a data directory: `mkdir -p /data/db`.
+   
 4.  **Directory Structure**
     
     Ensure your project looks like this:
